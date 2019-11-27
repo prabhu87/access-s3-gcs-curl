@@ -11,7 +11,7 @@ curr_date=`date +'%a, %d %b %Y %H:%M:%S %z'`
 
 # This is the name of your S3/GCS bucket
 
-string_to_sign="GET\n\n\n${curr_date}\n/${bucket_name}${req_path}"
+string_to_sign="GET\n\n\n${curr_date}\n/${bucket_name}/aws/${req_path}"
 
 # We will now calculate the signature to be sent as a header.
 signature=$(echo -en "${string_to_sign}" | openssl sha1 -hmac "${secret}" -binary | base64)
